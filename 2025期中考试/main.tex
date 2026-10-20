@@ -1,0 +1,277 @@
+% !TeX program = xelatex
+% 统一模板：A4、中文宋体、五号（10.5 pt）、XeLaTeX 编译。
+% 本前导区完整内嵌于每一份试卷，试卷之间没有相互依赖。
+\documentclass[UTF8,zihao=5,fontset=none,a4paper]{ctexart}
+\IfFontExistsTF{SimSun}{%
+  \setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+  \setCJKsansfont{SimHei}
+  \setCJKmonofont{FangSong}
+}{%
+  \setCJKmainfont{FandolSong-Regular}[BoldFont=FandolSong-Bold,ItalicFont=FandolKai-Regular]
+  \setCJKsansfont{FandolHei-Regular}
+  \setCJKmonofont{FandolFang-Regular}
+}
+\usepackage[left=23mm,right=23mm,top=23mm,bottom=23mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx,array,tabularx,enumitem,needspace}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,patterns,calc,angles,quotes}
+\usepackage{fancyhdr,lastpage}
+\usepackage[hidelinks,unicode]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\linespread{1.22}
+\setlength{\emergencystretch}{2em}
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlist[enumerate]{leftmargin=2em,itemsep=3pt,topsep=3pt}
+\ctexset{section={format=\zihao{5}\bfseries,number={},beforeskip=12pt,afterskip=6pt}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\zihao{5}\ExamShort}
+\fancyhead[R]{\zihao{5}大学物理 BII}
+\fancyfoot[C]{\zihao{5}第 \thepage\ 页\quad 共 \pageref*{LastPage}\ 页}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcommand{\makexamtitle}{%
+  \begin{center}\zihao{5}\bfseries\ExamTitle\end{center}\vspace{3pt}}
+\newcounter{question}
+\newcommand{\q}{\par\Needspace{5\baselineskip}\refstepcounter{question}%
+  \noindent\textbf{\thequestion、}\ignorespaces}
+\newcommand{\resetquestions}{\setcounter{question}{0}}
+\newcommand{\choices}[4]{\par\nopagebreak
+  \begin{tabularx}{\linewidth}{@{}*{4}{>{\raggedright\arraybackslash}X}@{}}
+  A.\ #1 & B.\ #2 & C.\ #3 & D.\ #4
+  \end{tabularx}\par}
+\newcommand{\choicestwo}[4]{\par\nopagebreak
+  \begin{tabularx}{\linewidth}{@{}*{2}{>{\raggedright\arraybackslash}X}@{}}
+  A.\ #1 & B.\ #2\\[5pt] C.\ #3 & D.\ #4
+  \end{tabularx}\par}
+\newcommand{\choiceslong}[4]{\par\nopagebreak
+  \begin{enumerate}[label=\Alph*.,leftmargin=1.8em]
+  \item #1 \item #2 \item #3 \item #4
+  \end{enumerate}}
+\newcommand{\choicesthree}[3]{\par\nopagebreak
+  \begin{enumerate}[label=\Alph*.,leftmargin=1.8em]
+  \item #1 \item #2 \item #3
+  \end{enumerate}}
+\newcommand{\blank}[1][2cm]{\underline{\hspace{#1}}}
+\newcommand{\ans}[2]{\par\Needspace{4\baselineskip}\textbf{#1、#2}\par}
+\newenvironment{diagram}{\par\nopagebreak\begin{center}%
+  \begin{tikzpicture}[>=Stealth,line width=.65pt,font=\normalsize]}
+  {\end{tikzpicture}\end{center}}
+\newcommand{\figlabel}[1]{\par\nopagebreak{\centering #1\par}}
+\newenvironment{questionblock}{\par\addvspace{5pt}\noindent
+  \begin{minipage}{\linewidth}\setlength{\parskip}{4pt}}
+  {\end{minipage}\par\addvspace{5pt}}
+\tikzset{spring/.style={decorate,decoration={coil,aspect=.5,segment length=5pt,amplitude=4pt}},
+  wall/.style={pattern=north east lines,pattern color=black}}
+
+\newcommand{\ExamTitle}{东南大学2024--2025学年大学物理BII期中考试试卷}
+\newcommand{\ExamShort}{2024--2025学年\quad 期中考试}
+\hypersetup{pdftitle={东南大学2024—2025学年大学物理BII期中考试试卷}}
+\begin{document}
+\makexamtitle
+\begin{center}考试时间：120 分钟\qquad 满分：100 分\end{center}
+\textbf{注意事项：}
+\begin{enumerate}[label=\arabic*.]
+\item 请将答案写在答题纸上，写在试卷上无效。
+\item 考试中可以使用计算器。
+\item 所有小数保留两位。
+\end{enumerate}
+\begin{questionblock}
+\section{一、选择题}
+\q 两个质点的振动图像如下图所示。则质点 2 相对质点 1（\quad）。
+\choices{超前 $\frac{2\pi}{3}$}{超前 $\frac{\pi}{3}$}{滞后 $\frac{2\pi}{3}$}{滞后 $\frac{\pi}{3}$}
+\end{questionblock}
+\begin{questionblock}
+\q 下图中的两个振动合成之后，则合振幅为（\quad）。
+\choices{$\frac12 A$}{$\frac{\sqrt7}{2}A$}{$\frac{\sqrt5}{2}A$}{$\frac{\sqrt3}{2}A$}
+\begin{diagram}
+\draw[->] (-.9,0)--(7,0) node[right]{$t$};
+\draw[->] (0,-1.6)--(0,1.8) node[above]{$x$};
+\draw[dashed] (-.9,1.2)--(7,1.2);
+\draw[dashed] (-.9,.6)--(7,.6);
+\draw[domain=-.9:7,samples=220] plot(\x,{1.2*cos(90*\x)});
+\draw[domain=-.9:7,samples=220] plot(\x,{.6*cos(90*\x-120)});
+\node[above left] at (0,1.2){$A$};
+\node[left] at (0,.6){$\frac A2$};
+\fill (0,-.3) circle(1.4pt) node[right]{$-\frac A4$};
+\node[circle,draw,inner sep=1pt,above] at (3.35,1.05){1};
+\node[circle,draw,inner sep=1pt,below] at (2.9,-.8){2};
+\end{diagram}
+\figlabel{第 1、2 题图}
+\end{questionblock}
+\begin{questionblock}
+\q 在一个无阻尼的 LC 振荡电路中，某时刻电容上的电荷如下图所示。
+$Q>0$，且 $Q$ 正在增大。则电路中的电流状态是（\quad）。
+\choicestwo{顺时针电流且在增大}{顺时针电流且在减小}
+{逆时针电流且在增大}{逆时针电流且在减小}
+\begin{diagram}
+\draw (0,0)--(0,.4);
+\draw[spring] (0,.4)--(0,1.8);
+\draw (0,1.8)--(0,2.2)--(1.5,2.2)--(1.5,1.2);
+\draw (1.2,1.2)--(1.8,1.2);
+\draw (1.2,1.0)--(1.8,1.0);
+\draw (1.5,1.0)--(1.5,0)--(0,0);
+\node[right] at (1.8,1.3){$+Q$};
+\node[right] at (1.8,.8){$-Q$};
+\end{diagram}
+\figlabel{第 3 题图}
+\end{questionblock}
+\begin{questionblock}
+\q 一列波长为 $\lambda$、周期为 $T$ 的机械波在 $t=\frac T4$ 时刻的位移如下图所示。那么 $P$ 点的横坐标为（\quad）。
+\choices{$\frac{13}{12}\lambda$}{$\frac{15}{12}\lambda$}{$\frac{17}{12}\lambda$}{$\frac{19}{12}\lambda$}
+\q 在下图的时刻，$P$ 点的能量状态为（\quad）。
+\choiceslong{动能最大，势能为 0，且机械能守恒}
+{动能为 0，势能最大，且机械能守恒}
+{动能和势能都最大，且向周围传递能量}
+{动能和势能都为 0，且从周围吸收能量}
+\begin{diagram}
+\draw[->] (-.7,0)--(7,0) node[right]{$x$};
+\draw[->] (0,-1.6)--(0,1.65) node[above]{$y$};
+\draw[domain=-.7:7,samples=200] plot(\x,{1.2*cos(90*\x+120)});
+\draw (-.7,-1.2)--(7,-1.2);
+\node[below left] at (0,-1.2){$-A$};
+\node[right] at (0,-.6){$-\frac A2$};
+\fill (5.66667,0) circle(1.5pt) node[below right]{$P$};
+\end{diagram}
+\figlabel{第 4、5 题图}
+\end{questionblock}
+\begin{questionblock}
+\q 用波长为 $\lambda$ 的光照射如下图所示的双缝干涉装置。在装置下面的狭缝后推入一个楔形晶体，在晶体的最厚处原来的中央明纹变为了第五级明纹。那么晶体最厚处的厚度为（\quad）。
+\choices{$\frac{5\lambda}{n-1}$}{$\frac{5n\lambda}{n-1}$}
+{$\frac{5\lambda}{2(n-1)}$}{$\frac{5n\lambda}{2(n-1)}$}
+\begin{diagram}
+\draw (0,-1.1)--(0,-.45) (0,-.3)--(0,.3) (0,.45)--(0,1.1);
+\draw (.12,-.1)--(.12,-.65)--(.4,-.65)--cycle;
+\draw (2,-1.3)--(2,1.3);
+\end{diagram}
+\figlabel{第 6 题图}
+\end{questionblock}
+\begin{questionblock}
+\q 用上题中的楔形晶体在空气中做等厚干涉，入射光的波长为 $500\,\mathrm{nm}$，入射角为 $30^\circ$，晶体最厚处厚 $30\,\mu\mathrm m$，折射率为 1.5。那么最多可以看见的明纹条数为（\quad）。
+\choices{11}{43}{141}{180}
+\end{questionblock}
+\begin{questionblock}
+\q 在单缝衍射实验中，中央主明纹同一侧的第四级明纹和第一级明纹的坐标之比为（\quad）。
+\choices{2}{3}{3.5}{4}
+\end{questionblock}
+\begin{questionblock}
+\q 天宫空间站运行在离地 $400\,\mathrm{km}$ 的轨道上。人眼瞳孔的直径为 $3\,\mathrm{mm}$，最敏感的光波长为 $550\,\mathrm{nm}$。那么宇航员可以分辨在地球上的最小物体的长度为（\quad）。
+\choices{$10\,\mathrm m$}{$35\,\mathrm m$}{$40\,\mathrm m$}{$90\,\mathrm m$}
+\end{questionblock}
+\begin{questionblock}
+\q 在下面四幅图中，$i_{\mathrm B}$ 表示布鲁斯特角。那么正确的图片是（\quad）。
+\begin{diagram}
+\foreach \n/\lab in {0/A,1/B,2/C,3/D}{
+\begin{scope}[xshift=\n*3.35cm,scale=1]
+\draw (-1.3,0)--(1.3,0);
+\draw[dashed] (0,-1.35)--(0,1.35);
+\draw[->] (-1.05,1.15)--(0,0);
+\draw[->] (0,0)--(1.05,1.15);
+\draw[->] (0,0)--(.45,-1.3);
+\foreach \t in {.25,.48,.71,.9}{
+\fill ({-1.05*\t},{1.15*\t}) circle(1.8pt);
+\draw ({-1.05*\t-.08},{1.15*\t-.075})--({-1.05*\t+.08},{1.15*\t+.075});}
+\draw (0,.42) arc[start angle=90,end angle=132,radius=.42];
+\node[left] at (-.05,.85){$i_{\mathrm B}$};
+\node at (0,-1.7){\lab.};
+\end{scope}}
+\begin{scope}[scale=1]
+\foreach \t in {.25,.48,.71,.9}{\fill ({1.05*\t},{1.15*\t}) circle(1.8pt);}
+\foreach \t in {.25,.48,.71,.9}{\draw ({.45*\t-.13},{-1.3*\t-.045})--({.45*\t+.13},{-1.3*\t+.045});}
+\end{scope}
+\begin{scope}[xshift=3.35cm,scale=1]
+\foreach \t in {.25,.48,.71,.9}{\fill ({1.05*\t},{1.15*\t}) circle(1.8pt);}
+\foreach \t in {.36,.6}{\draw ({1.05*\t-.08},{1.15*\t+.075})--({1.05*\t+.08},{1.15*\t-.075});}
+\fill (.225,-.65) circle(1.8pt);
+\end{scope}
+\begin{scope}[xshift=6.7cm,scale=1]
+\foreach \t in {.25,.48,.71,.9}{\fill ({1.05*\t},{1.15*\t}) circle(1.8pt);}
+\foreach \t in {.36,.6}{\draw ({1.05*\t-.08},{1.15*\t+.075})--({1.05*\t+.08},{1.15*\t-.075});}
+\foreach \t in {.35,.65}{\draw ({.45*\t-.13},{-1.3*\t-.045})--({.45*\t+.13},{-1.3*\t+.045});}
+\fill (.225,-.65) circle(1.8pt);
+\end{scope}
+\begin{scope}[xshift=10.05cm,scale=1]
+\foreach \t in {.25,.48,.71,.9}{\fill ({1.05*\t},{1.15*\t}) circle(1.8pt);}
+\foreach \t in {.35,.65}{\draw ({.45*\t-.13},{-1.3*\t-.045})--({.45*\t+.13},{-1.3*\t+.045});}
+\fill (.225,-.65) circle(1.8pt);
+\end{scope}
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\section{二、填空题}
+\resetquestions
+\q 一个质点做简谐运动，加速度为
+$a=8\pi^2\cos(2\pi t+\frac54\pi)\ (\mathrm{SI})$，则振动的振幅为
+\blank $\mathrm m$，周期为 \blank $\mathrm s$，初相位为 \blank。
+\end{questionblock}
+\begin{questionblock}
+\q 一个木块放置在木板上，和木板一起做 $2\,\mathrm{Hz}$ 的简谐振动。要使木块不脱离木板，则最大振幅为 \blank $\mathrm{cm}$。（$g=9.8\,\mathrm{m/s^2}$）
+\end{questionblock}
+\begin{questionblock}
+\q 一列波的波动方程为 $y=2\cos(0.5\pi x-20\pi t+\frac\pi4)$，则这列波的波长为
+\blank $\mathrm m$，波速为 \blank $\mathrm{m/s}$。
+$x=2\,\mathrm m$ 相对 $x=8\,\mathrm m$ 处的相位差为 \blank。
+\end{questionblock}
+\begin{questionblock}
+\q 有两个相距 $10\,\mathrm{cm}$ 的相干波源，相位差为 $\pi$，振幅分别为 $A$ 和 $3A$。那么在两个波源的连线上最大振幅为 \blank $A$，共有 \blank 个点。
+\end{questionblock}
+\begin{questionblock}
+\q 一列纵波在直径为 $0.14\,\mathrm m$ 的管道内传播，强度为 $9\times10^{-3}\,\mathrm{W/m^2}$，波速为 $300\,\mathrm{m/s}$，频率为 $30\,\mathrm{Hz}$，则波的能量密度为 \blank $\mathrm{J/m^3}$。
+\end{questionblock}
+\begin{questionblock}
+\q 有一条长 $2\,\mathrm m$ 的绳子两端固定，在一端用频率为 $300\,\mathrm{Hz}$ 的电动音叉驱动，观测到出现了 5 个驻波波腹。则绳子中的波速为 \blank $\mathrm{m/s}$。
+\end{questionblock}
+\begin{questionblock}
+\q 在深海中，甲潜艇正在追赶乙潜艇。甲的速度为 $80\,\mathrm{km/h}$，乙的速度为 $60\,\mathrm{km/h}$。如果甲发出一束频率为 $100\,\mathrm{Hz}$ 的声呐波，水中声波的波速为 $5500\,\mathrm{km/h}$。那么乙接收到的频率为 \blank $\mathrm{Hz}$，甲感受到的拍频为 \blank $\mathrm{Hz}$。
+\end{questionblock}
+\begin{questionblock}
+\q 相关规定规定，煤矿中瓦斯的浓度超过 $8\%$ 的气体不能直接排入大气。可以使用迈克尔逊干涉仪测量瓦斯的浓度。在迈克尔逊干涉仪的一支臂中的真空腔室中充入煤矿中采集到的气体。腔室长 $10.0\,\mathrm{cm}$，气体的折射率 $n$ 和浓度 $C$ 的关系满足 $n=1+2.5\times10^{-4}C$。那么当干涉条纹移动超过 \blank 条时，瓦斯浓度超过 $8\%$。
+\end{questionblock}
+\begin{questionblock}
+\q 三个偏振片 $P_1,P_2,P_3$ 依次平行放置，$P_1,P_3$ 相互垂直。一束自然光穿过后光强变为原来的 $\frac1{32}$。那么 $P_2$ 至少旋转过 \blank $^\circ$，出射光的光强变为 0。
+\end{questionblock}
+\begin{questionblock}
+\section{三、解答题}
+\resetquestions
+\q 有一个光滑斜面，倾角 $\theta=30^\circ$，底端固定一个弹性系数 $k=100\,\mathrm{N/cm}$ 的弹簧。物块 1（$m_1=1\,\mathrm{kg}$）抵在弹簧上，处于稳定状态。物块 2（$m_2=3\,\mathrm{kg}$）在物块 1 上方距离 $l=9.9\,\mathrm{cm}$ 处释放，与物块 1 发生完全非弹性碰撞。
+\begin{enumerate}[label=(\arabic*)]
+\item 求两个物体碰撞后振动的角频率和振幅。
+\item 以碰撞后两个物体的平衡位置为势能零点，求谐振子的能量。
+\end{enumerate}
+\begin{diagram}
+\draw (0,0)--(4.5,0)--(0,2.6)--cycle;
+\begin{scope}[shift={(0,2.6)},rotate=-30]
+\draw (.6,0) rectangle (1.35,.65);
+\node at (.975,.325){$m_2$};
+\draw (2.7,0) rectangle (3.45,.65);
+\node at (3.075,.325){$m_1$};
+\draw[spring] (3.45,.32)--(4.75,.32);
+\draw (4.75,0)--(4.75,.75);
+\draw[<->] (1.35,.85)--(2.7,.85) node[midway,above]{$l$};
+\end{scope}
+\node at (3.45,.23){$\theta=30^\circ$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 如图是由 A、B 两个球面透镜组成的牛顿环装置，在 $\lambda=500\,\mathrm{nm}$ 的光的照射下观察，发现第十条明纹的半径 $r=5\,\mathrm{mm}$。
+\begin{enumerate}[label=(\arabic*)]
+\item 如果透镜 A 的曲率半径 $R_{\mathrm A}=10\,\mathrm m$，求透镜 B 的曲率半径 $R_{\mathrm B}$。
+\item 如果把透镜 A 往上提 $\delta=1.75\,\mu\mathrm m$，那么原来的第十条明纹的半径是多少。
+\end{enumerate}
+\begin{diagram}
+\draw[thick] (-1.7,1)--(1.7,1) .. controls (.9,-.333) and (-.9,-.333) .. (-1.7,1);
+\draw[thick] (-1.7,-1)--(1.7,-1) .. controls (.9,.333) and (-.9,.333) .. (-1.7,-1);
+\node at (0,.62){A}; \node at (0,-.62){B};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 有一个衍射光栅，每 $1\,\mathrm{mm}$ 有 250 条刻痕，且缝宽与光栅常数的比值为 $1:3$。用 $\lambda=500\,\mathrm{nm}$ 的光照射，观察装置的凸透镜焦距 $f=1\,\mathrm m$。
+\begin{enumerate}[label=(\arabic*)]
+\item 求光屏上可以看见的主明纹的条数和对应的级数。
+\item 如果入射光斜向上入射，与法线的夹角 $i=30^\circ$，求光屏上可以看见的主明纹的条数和对应的级数。
+\item 用 $\lambda_1=500\,\mathrm{nm}$ 和 $\lambda_2=600\,\mathrm{nm}$ 的光分别照射衍射光栅，求两种光在中央主极大同一侧的第五级明纹间的间距。
+\end{enumerate}
+\end{questionblock}
+\end{document}

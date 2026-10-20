@@ -1,0 +1,587 @@
+% !TeX program = xelatex
+% 统一模板：A4、中文宋体、五号（10.5 pt）、XeLaTeX 编译。
+% 本前导区完整内嵌于每一份试卷，试卷之间没有相互依赖。
+\documentclass[UTF8,zihao=5,fontset=none,a4paper]{ctexart}
+\IfFontExistsTF{SimSun}{%
+  \setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+  \setCJKsansfont{SimHei}
+  \setCJKmonofont{FangSong}
+}{%
+  \setCJKmainfont{FandolSong-Regular}[BoldFont=FandolSong-Bold,ItalicFont=FandolKai-Regular]
+  \setCJKsansfont{FandolHei-Regular}
+  \setCJKmonofont{FandolFang-Regular}
+}
+\usepackage[left=23mm,right=23mm,top=23mm,bottom=23mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx,array,tabularx,enumitem,needspace}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,patterns,calc,angles,quotes}
+\usepackage{fancyhdr,lastpage}
+\usepackage[hidelinks,unicode]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\linespread{1.22}
+\setlength{\emergencystretch}{2em}
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlist[enumerate]{leftmargin=2em,itemsep=3pt,topsep=3pt}
+\ctexset{section={format=\zihao{5}\bfseries,number={},beforeskip=12pt,afterskip=6pt}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\zihao{5}\ExamShort}
+\fancyhead[R]{\zihao{5}大学物理 BII}
+\fancyfoot[C]{\zihao{5}第 \thepage\ 页\quad 共 \pageref*{LastPage}\ 页}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcommand{\makexamtitle}{%
+  \begin{center}\zihao{5}\bfseries\ExamTitle\end{center}\vspace{3pt}}
+\newcounter{question}
+\newcommand{\q}{\par\Needspace{5\baselineskip}\refstepcounter{question}%
+  \noindent\textbf{\thequestion、}\ignorespaces}
+\newcommand{\resetquestions}{\setcounter{question}{0}}
+\newcommand{\choices}[4]{\par\nopagebreak
+  \begin{tabularx}{\linewidth}{@{}*{4}{>{\raggedright\arraybackslash}X}@{}}
+  A.\ #1 & B.\ #2 & C.\ #3 & D.\ #4
+  \end{tabularx}\par}
+\newcommand{\choicestwo}[4]{\par\nopagebreak
+  \begin{tabularx}{\linewidth}{@{}*{2}{>{\raggedright\arraybackslash}X}@{}}
+  A.\ #1 & B.\ #2\\[5pt] C.\ #3 & D.\ #4
+  \end{tabularx}\par}
+\newcommand{\choiceslong}[4]{\par\nopagebreak
+  \begin{enumerate}[label=\Alph*.,leftmargin=1.8em]
+  \item #1 \item #2 \item #3 \item #4
+  \end{enumerate}}
+\newcommand{\choicesthree}[3]{\par\nopagebreak
+  \begin{enumerate}[label=\Alph*.,leftmargin=1.8em]
+  \item #1 \item #2 \item #3
+  \end{enumerate}}
+\newcommand{\blank}[1][2cm]{\underline{\hspace{#1}}}
+\newcommand{\ans}[2]{\par\Needspace{4\baselineskip}\textbf{#1、#2}\par}
+\newenvironment{diagram}{\par\nopagebreak\begin{center}%
+  \begin{tikzpicture}[>=Stealth,line width=.65pt,font=\normalsize]}
+  {\end{tikzpicture}\end{center}}
+\newcommand{\figlabel}[1]{\par\nopagebreak{\centering #1\par}}
+\newenvironment{questionblock}{\par\addvspace{5pt}\noindent
+  \begin{minipage}{\linewidth}\setlength{\parskip}{4pt}}
+  {\end{minipage}\par\addvspace{5pt}}
+\tikzset{spring/.style={decorate,decoration={coil,aspect=.5,segment length=5pt,amplitude=4pt}},
+  wall/.style={pattern=north east lines,pattern color=black}}
+
+\newcommand{\ExamTitle}{东南大学2023--2024学年大学物理BII第一次月考试卷}
+\newcommand{\ExamShort}{2023--2024学年\quad 第一次月考}
+\hypersetup{pdftitle={东南大学2023—2024学年大学物理BII第一次月考试卷}}
+\begin{document}
+\makexamtitle
+\begin{center}第一学期\end{center}
+\begin{questionblock}
+\section{一、选择题（每小题 3 分，共 32 分）}
+\q 一质点作简谐振动，周期为 $T$，当质点由平衡位置向 $Ox$ 轴正方向运动时，由平衡位置运动到二分之一最大位移处所需要的时间为（\quad）。
+\choices{$\frac T4$}{$\frac T6$}{$\frac T8$}{$\frac T{12}$}
+\end{questionblock}
+\begin{questionblock}
+\q 如图所示，当简谐振子到达正最大位移处，恰有一泥块从正上方落到振子上，并与振子粘在一起，仍作简谐运动。则下述结论正确的是（\quad）。
+\choiceslong{振动系统的总能量变大，周期变大}
+{振动系统的总能量不变，周期变大}
+{振动系统的总能量变小，周期变小}
+{振动系统的总能量不变，周期变小}
+\begin{diagram}
+\fill[wall] (-.18,-.25) rectangle (0,1.2);
+\draw (0,-.25)--(0,1.2);
+\draw[->] (0,0)--(4.4,0) node[right]{$x$};
+\draw[spring] (0,.35)--(2.6,.35);
+\node at (1.3,.75){$k$};
+\draw[fill=gray!25] (2.6,0) rectangle (3.45,.65);
+\draw (2,0)--(2,-.15) node[below]{$O$};
+\node[below] at (3.03,-.1){$A$};
+\draw (3,1.65) circle(.13);
+\draw[->] (3,1.48)--(3,.95) node[midway,right]{$v$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 一根自由长度为 $10\,\mathrm{cm}$ 的轻弹簧下端固定，上端连一质量为 $m$ 的物块 P，在 P 上再放一个质量也是 $m$ 的物块 Q。系统静止后，弹簧长度为 $6\,\mathrm{cm}$，如图所示。如果迅速向上移去 Q，物块 P 将在竖直方向作简谐运动。则此后弹簧的最大长度为（\quad）$\mathrm{cm}$。
+\choices{8}{10}{12}{14}
+\begin{diagram}
+\fill[wall] (-.8,-.15) rectangle (1,-.02);
+\draw (-.8,0)--(1,0);
+\draw[spring] (0,0)--(0,1.2);
+\draw (-.3,1.2) rectangle (.3,1.7);
+\draw (-.3,1.7) rectangle (.3,2.2);
+\node at (0,1.45){P}; \node at (0,1.95){Q};
+\draw[<->] (.65,0)--(.65,1.2) node[midway,right]{$6\,\mathrm{cm}$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 一劲度系数为 $k$ 的轻弹簧，下端挂一质量为 $m$ 的物体，系统的振动周期为 $T_1$；若将此弹簧截去一半的长度，下端挂一质量为 $m/2$ 的物体，则此时系统振动周期为（\quad）。
+\choices{$\frac{T_1}2$}{$\frac{T_1}{\sqrt2}$}{$T_1$}{$2T_1$}
+\end{questionblock}
+\begin{questionblock}
+\q 一弹簧振子作简谐振动，总能量为 $E$，如果使简谐振动振幅增加为原来的 2 倍，重物的质量增加为原来的 4 倍，则它的总能量 $E_1$ 变为（\quad）。
+\choices{$2E$}{$4E$}{$8E$}{$16E$}
+\end{questionblock}
+\begin{questionblock}
+\q 两个质点各自作简谐振动，它们的振幅相同、周期相同。已知第一个质点的运动方程为
+$x_1=A\cos(\omega t+\varphi_0)$。当第一个质点从正向位移回到平衡位置时，第二个质点恰处于正向最大位移处。则第二个质点的运动方程为（\quad）。
+\choicestwo{$x_2=A\cos(\omega t+\varphi_0+\pi)$}
+{$x_2=A\cos(\omega t+\varphi_0+\frac\pi2)$}
+{$x_2=A\cos(\omega t+\varphi_0-\frac\pi2)$}
+{$x_2=A\cos(\omega t+\varphi_0-\frac{3\pi}2)$}
+\end{questionblock}
+\begin{questionblock}
+\q 两个同振动方向、同频率、振幅均为 $A$ 的简谐运动合成后，振幅仍为 $A$，则这两个简谐运动的相位差为（\quad）。
+\choices{$30^\circ$}{$60^\circ$}{$90^\circ$}{$120^\circ$}
+\end{questionblock}
+\begin{questionblock}
+\q 两个同频率的简谐振动的振动曲线如图所示，若两振动在同方向上叠加，则合振动的初相位为（\quad）。
+\choices{$\frac{11}{12}\pi$}{$-\frac{11}{12}\pi$}{$-\frac1{12}\pi$}{$\frac7{12}\pi$}
+\begin{diagram}
+\draw[->] (-.3,0)--(5.6,0) node[right]{$t/\mathrm s$};
+\draw[->] (0,-1.4)--(0,1.5) node[above]{$x/\mathrm{cm}$};
+\draw[thin] (0,1)--(5.4,1) (0,-1)--(5.4,-1);
+\draw[domain=0:5.4,samples=170] plot(\x,{-sin(90*\x)});
+\draw[domain=0:5.4,samples=170] plot(\x,{cos(90*\x-120)});
+\foreach \x/\lab in {2/1,4/2}{\draw (\x,0)--(\x,-.08) node[below]{$\lab$};}
+\node[left] at (0,0){0}; \node[left] at (0,.5){0.5}; \node[left] at (0,-.5){$-0.5$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 某一周期性振动的数学表达式为 $x=2a(1+\cos\omega t)\cos m\omega t$，该振动可以分解为三个简振动，它们的角频率分别为 $m\omega$、$(m+1)\omega$ 和 $(m-1)\omega$；可知其中两个简谐振动的振幅分别为 $a$ 和 $2a$，则第三个简谐振动的振幅为（\quad）。
+\choices{$a$}{$2a$}{$3a$}{$4a$}
+\end{questionblock}
+\begin{questionblock}
+\q 质量为 $m$ 的托盘，通过轻质弹簧（原长为 $l_0$，劲度系数为 $k$）挂在天花板上，初始静止如图所示。一质量同为 $m$ 的黏土在弹簧原长处静止释放，落在盘中后粘在一起，则之后系统做简谐运动的振幅为（\quad）。
+\choicesthree{$\frac{mg}k$}{$\frac{\sqrt3mg}k$}{$\frac{\sqrt2mg}k$}
+\begin{diagram}
+\fill[wall] (-1,.1) rectangle (1,.25); \draw (-1,.1)--(1,.1);
+\draw[spring] (0,.1)--(0,-2.3);
+\draw[fill=gray!25] (-.4,-2.45) rectangle (.4,-2.3);
+\node[right] at (.45,-2.38){$m$};
+\draw (.2,-1.25) circle(.12); \node[right] at (.4,-1.25){$m$};
+\draw[dashed] (-1,-1.25)--(.2,-1.25);
+\draw[<->] (-.8,.1)--(-.8,-1.25) node[midway,left]{$l_0$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 质点同时参与两个振动频率相同但振动方向相互垂直的简谐振动，其运动轨迹如图所示，为半径为 $R$ 的圆。若 $x$ 方向简谐振动的表达式为 $x=R\cos(\omega t)$，则 $y$ 方向简谐振动的表达式为（\quad）。
+\choicesthree{$y=R\cos(\omega t)$}{$y=R\cos(\omega t+\frac\pi2)$}{$y=R\cos(\omega t+\pi)$}
+\begin{diagram}
+\draw[->] (-1.2,0)--(1.4,0) node[right]{$x$};
+\draw[->] (0,-1.2)--(0,1.4) node[above]{$y$};
+\draw (0,0) circle(.85); \node[below left] at (0,0){$O$};
+\draw[->] (65:1.03) arc[start angle=65,end angle=15,radius=1.03];
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 如图所示，当 A 振动起来后，通过水平挂绳迫使 B、C 振动，稳定时，下列说法中正确的是（\quad）。
+\choiceslong{只有 A、C 振动周期相等}{C 的振幅比 B 的振幅小}
+{振动系统的总能量变小，周期变小}{振动系统的总能量不变，周期变小}
+\begin{diagram}
+\fill[wall] (-.15,-.35) rectangle (0,.4);
+\fill[wall] (3,-.35) rectangle (3.15,.4);
+\draw (0,0)--(3,0);
+\foreach \x/\len/\mass/\lab in {.55/1.1/2m/A,1.5/2.2/{m/2}/B,2.45/1.1/m/C}{
+\draw (\x,0)--(\x,-\len);
+\draw (\x,{-\len-.1}) circle(.1);
+\node[below] at (\x,{-\len-.25}){$\lab$};
+\node[right] at (\x+.15,{-\len-.1}){$\mass$};}
+\node[left] at (.55,-.5){$L$}; \node[left] at (1.5,-1){$2L$}; \node[left] at (2.45,-.5){$L$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 如图所示，劲度系数为 $k$ 的弹簧，一端固定在墙壁上，另一端连接一质量为 $m$ 的物体，物体与桌面间的摩擦系数为 $\mu$。物体静止在坐标原点 $O$，此时弹簧长度为原长。若物体在不变的外力 $F$ 作用下向右移动，则物体到达所能允许的最远位置时系统的弹性势能值为（\quad）。
+\choicestwo{$\frac{2F^2}k$}{$\frac{F^2}{2k}$}
+{$\frac{2(F-\mu mg)^2}k$}{$\frac{(F-\mu mg)^2}{2k}$}
+\begin{diagram}
+\fill[wall] (-.15,-.2) rectangle (0,.85);
+\fill[wall] (0,-.15) rectangle (4.4,0);
+\draw (0,.85)--(0,0)--(4.4,0);
+\draw[spring] (0,.3)--(2.3,.3); \node at (1.1,.65){$k$};
+\draw (2.3,0) rectangle (3.1,.6); \node at (2.7,.3){$m$};
+\draw[->] (3.3,.3)--(4.3,.3) node[midway,above]{$F$};
+\draw[->] (2.7,-.35)--(4.4,-.35) node[right]{$x$};
+\node[below] at (2.7,-.35){$O$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 上端固定在天花板上的长细线，其下端悬挂一装满水的瓶子（瓶的质量不可忽略），瓶底有一小孔，在摆动过程中，瓶内的水不断向外漏。如忽略空气阻力，则从开始漏水到水漏完为止的整个过程中，其摆动频率（\quad）。
+\choicestwo{越来越小}{保持不变}{先变大后变小}{先变小后变大}
+\end{questionblock}
+\begin{questionblock}
+\q 一平面简谐波沿 $x$ 轴正方向传播，波速为 $u$，角频率为 $\omega$，设 $t=\frac{3T}4$ 时刻的波形如图所示。则该波的表达式为（\quad）。
+\choicestwo{$y=A\cos\omega(t-\frac xu)$}
+{$y=A\cos[\omega(t-\frac xu)+\frac\pi2]$}
+{$y=A\cos[\omega(t-\frac xu)-\pi]$}
+{$y=A\cos[\omega(t-\frac xu)-\frac\pi2]$}
+\begin{diagram}
+\draw[->] (-.3,0)--(3.5,0) node[right]{$x$};
+\draw[->] (0,-.8)--(0,1.1) node[above]{$y$};
+\draw[domain=0:3,samples=100] plot(\x,{.65*sin(120*\x)});
+\draw[->] (1.3,1)--(2.3,1); \node[below left] at (0,0){$O$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 频率为 $500\,\mathrm{Hz}$ 的机械波，波速为 $360\,\mathrm{m\cdot s^{-1}}$，则同一波线上相位差为 $\frac\pi3$ 的两点相距约为（\quad）。
+\choices{$1.45\,\mathrm m$}{$0.75\,\mathrm m$}{$9.13\,\mathrm m$}{$0.12\,\mathrm m$}
+\end{questionblock}
+\begin{questionblock}
+\q 已知 $t=0.5\,\mathrm s$ 时余弦波的波形如图所示，波速大小 $u=10\,\mathrm{m\cdot s^{-1}}$，若此时 P 点处介质元的振动动能在逐渐增大，则此波的波函数为（\quad）。
+\choiceslong{$y=10\cos[\pi(t-\frac x{10})-\frac\pi2]\,\mathrm{cm}$}
+{$y=10\cos[\pi(t+\frac x{10})-\frac\pi2]\,\mathrm{cm}$}
+{$y=10\cos[\pi(t-\frac x{10})-\pi]\,\mathrm{cm}$}
+{$y=10\cos[\pi(t+\frac x{10})-\pi]\,\mathrm{cm}$}
+\begin{diagram}
+\draw[->] (-.2,0)--(4.5,0) node[right]{$x/\mathrm m$};
+\draw[->] (0,-1.2)--(0,1.4) node[above]{$y/\mathrm{cm}$};
+\draw[domain=0:4,samples=110] plot(\x,{sin(90*\x)});
+\draw[dashed] (0,1)--(1,1) (0,-1)--(3,-1);
+\node[left] at (0,1){10}; \node[left] at (0,-1){$-10$}; \node[left] at (0,0){0};
+\node[below] at (4,0){20};
+\fill (3.5,-.7071) circle(1.5pt) node[below right]{P};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 如图所示为一向左传播的平面简谐横波在 $t_1=\frac T4$ 时刻的波形曲线（$T$ 为波动周期），则（\quad）。
+\choiceslong{$t=0$ 时刻 $O$ 点处质元的相位为 $\pi$}
+{$t_1$ 时刻之后 $a$ 点处质元的弹性势能将随时间的增加而逐渐增加}
+{$t_1$ 时刻 $b$ 点处质元的速度方向向下}
+{$O$ 点处质元做简谐振动，机械能不随时间变化}
+\begin{diagram}
+\draw[->] (-.5,0)--(3.9,0) node[right]{$x$};
+\draw[->] (0,-1.1)--(0,1.3) node[above]{$y$};
+\draw[domain=0:3,samples=100] plot(\x,{.8*sin(120*\x)});
+\node[below left] at (0,0){$O$};
+\node[below] at (1.5,0){$a$}; \node[above] at (3,0){$b$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 当一平面简谐波在弹性介质中传播时，下列各结论哪一个是正确的？（\quad）
+\choiceslong{介质质元的振动动能增大时，其弹性势能减小，总机械能守恒}
+{介质质元的振动动能和弹性势能都作周期性变化但两者的相位不相同}
+{介质质元的振动动能和弹性势能的相位在任一时刻都相同，但两者的数值不相等}
+{介质质元在其平衡位置处弹性势能最大}
+\end{questionblock}
+\begin{questionblock}
+\q 一列机械横波在 $t$ 时刻的波形曲线如图所示，则该时刻能量为最大值的媒质质元的位置为（\quad）。
+\choicestwo{$o',\,b,\,d,\,f$}{$a,\,c,\,e$}{$o',\,d$}{$b,\,f$}
+\begin{diagram}
+\draw[->] (-.3,0)--(5.9,0) node[right]{$x$};
+\draw[->] (0,-1.1)--(0,1.4) node[above]{$y$};
+\draw[domain=0:5.5,samples=180] plot(\x,{.8*cos(120*\x)});
+\foreach \x/\v/\lab in {0/.8/{o'},.75/0/a,1.5/-.8/b,2.25/0/c,3/.8/d,3.75/0/e,4.5/-.8/f}{
+\draw[dashed] (\x,0)--(\x,\v);
+\node[below] at (\x,\v){$\lab$};}
+\node[below left] at (0,0){$O$};
+\draw[->] (3.8,1.25)--(5.3,1.25) node[midway,above]{波速 $u$，时刻 $t$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 如图所示为一列沿 $x$ 正方向传播、频率为 $50\,\mathrm{Hz}$ 的简谐横波在 $t=0$ 时刻的波形，此时 P 点恰好开始振动。已知波源的平衡位置在 $O$ 点，P、Q 两质点平衡位置分别为 $\mathrm P(12,0)$、$\mathrm Q(56,0)$，则（\quad）。
+\choiceslong{波源刚开始振动时的运动方向为沿 $y$ 轴正方向}
+{这列波的波速为 $600\,\mathrm{m/s}$}
+{当 $t=0.11\,\mathrm s$ 时，Q 点刚开始振动}
+{Q 点刚开始振动时，P 点恰位于波谷}
+\begin{diagram}
+\draw[->] (-.4,0)--(5.5,0) node[right]{$x/\mathrm{cm}$};
+\draw[->] (0,-1.1)--(0,1.1) node[above]{$y/\mathrm{cm}$};
+\draw[domain=0:3.6,samples=150] plot(\x,{-.75*sin(150*\x)});
+\fill (3.6,0) circle(1.5pt) node[above]{P};
+\fill (4.8,0) circle(1.5pt) node[above]{Q};
+\node[below left] at (0,0){$O$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 如图所示，$S_1$ 和 $S_2$ 为两相干波源，它们的振动方向均垂直于图面，发出波长为 $\lambda$ 的简谐波，P 点是两列波相遇区域中的一点，已知
+$\overline{S_1P}=2\lambda$，$\overline{S_2P}=2.2\lambda$，两列波在 P 点处相消干涉。若 $S_1$ 的振动方程为 $y_1=A\cos(2\pi t+\frac\pi2)$，则 $S_2$ 的振动方程为（\quad）。
+\choicestwo{$y_2=A\cos(2\pi t-\frac\pi2)$}{$y_2=A\cos(2\pi t-0.1\pi)$}
+{$y_2=A\cos(2\pi t+1.1\pi)$}{$y_2=A\cos(2\pi t+0.1\pi)$}
+\begin{diagram}
+\fill (0,1) circle(1.5pt) node[left]{$S_1$};
+\fill (-.3,-.4) circle(1.5pt) node[left]{$S_2$};
+\fill (2,.4) circle(1.5pt) node[right]{P};
+\draw[dashed] (0,1)--(2,.4)--(-.3,-.4);
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 两个完全相同的波源 $S_1$、$S_2$ 在水中激起两列完全相同的水波，这两列水波相遇区域将形成稳定的干涉图样，其中 $S_1$、$S_2$ 连线中点的垂直平分线上各点的振动都是加强的，那么其余振动加强的各点所连的曲线将是一系列的（\quad）。
+\choices{直线}{圆}{抛物线}{双曲线}
+\end{questionblock}
+\begin{questionblock}
+\q 在同一介质中两列相干的平面简谐波的强度之比是 $I_1/I_2=4$，则两列波的振幅之比是（\quad）。
+\choices{$A_1/A_2=4$}{$A_1/A_2=2$}{$A_1/A_2=16$}{$A_1/A_2=1/4$}
+\end{questionblock}
+\begin{questionblock}
+\q 在弦线上有一平面简谐波，其表达式为
+\[
+y_1=0.02\cos\left[100\pi\left(t+\frac x{20}\right)-\frac{4\pi}3\right]\quad(\mathrm{SI}),
+\]
+为了在此弦线上形成驻波，并且在 $x=0$ 处为一波腹，此弦线上还应有一平面简谐波，其表达式应为（\quad）。
+\choiceslong{$y_1=0.02\cos[100\pi(t-\frac x{20})+\frac\pi3]\ (\mathrm{SI})$}
+{$y_1=0.02\cos[100\pi(t-\frac x{20})-\frac{4\pi}3]\ (\mathrm{SI})$}
+{$y_1=0.02\cos[100\pi(t-\frac x{20})-\frac\pi3]\ (\mathrm{SI})$}
+{$y_1=0.02\cos[100\pi(t-\frac x{20})+\frac{4\pi}3]\ (\mathrm{SI})$}
+\end{questionblock}
+\begin{questionblock}
+\q 在弦线驻波实验中，当某一时刻弦线上各点的位移都为零时，关于弦线上各点的能量，以下说法正确的是（\quad）。
+\choicestwo{各点的动能均为零}{除波节外，各点的势能均达到最大}
+{除波节外，各点的动能均达到最大}{除波腹外，各点的动能均达到最大}
+\end{questionblock}
+\begin{questionblock}
+\q 一端固定、另一端自由的棒中有简正模式的振动存在，其中三个最低振动频率之比为（\quad）。
+\choices{$1:2:3$}{$1:2:4$}{$1:3:5$}{$1:4:9$}
+\end{questionblock}
+\begin{questionblock}
+\q 某时刻一驻波波形曲线如图所示，则图中 $a$、$b$ 两点之间的相位差为（\quad）。
+\choices{$0$}{$\frac{2\pi}3$}{$\frac{5\pi}6$}{$\pi$}
+\begin{diagram}
+\draw[->] (-.4,0)--(4.2,0) node[right]{$x$};
+\draw[->] (0,-1.3)--(0,1.4) node[above]{$y$};
+\draw[domain=-.2:4,samples=150] plot(\x,{cos(100*\x)});
+\draw[dashed] (0,1)--(3.6,1) (0,-1)--(2.7,-1) (1.8,0)--(1.8,-1);
+\draw[dashed] (0,.5)--(.6,.5);
+\node[left] at (0,1){$A$}; \node[left] at (0,.5){$A/2$}; \node[left] at (0,-1){$-A$};
+\node[below left] at (0,0){$O$};
+\fill (.6,.5) circle(1.5pt) node[above right]{$a$};
+\fill (1.8,-1) circle(1.5pt) node[below]{$b$};
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 声源 S 和接收器 R 均沿 $x$ 方向运动，已知两者相对于媒质的运动速率均为 $v$，如图所示。设声波在媒质中的传播速度为 $u$，声源振动频率为 $\nu_{\mathrm S}$，则接收器测得的频率 $\nu_{\mathrm R}$ 为（\quad）。
+\choicestwo{$\nu_{\mathrm R}=\frac{u+v}{u-v}\nu_{\mathrm S}$}{$\nu_{\mathrm R}=\frac{u-v}{u+v}\nu_{\mathrm S}$}
+{$\nu_{\mathrm R}=\frac u{u-v}\nu_{\mathrm S}$}{$\nu_{\mathrm R}=\nu_{\mathrm S}$}
+\begin{diagram}
+\draw[->] (-.4,0)--(4.4,0) node[right]{$x$};
+\foreach \x/\lab in {1/S,2.8/R}{
+\fill (\x,0) circle(2pt) node[below=6pt]{$\lab$};
+\draw[->] (\x-.3,.6)--(\x+.5,.6) node[midway,above]{$v$};}
+\end{diagram}
+\end{questionblock}
+\begin{questionblock}
+\q 平面电磁波在自由空间中传播时，电场强度和磁感应强度（\quad）。
+\choiceslong{互相垂直，且都垂直于传播方向}{朝互相垂直的两个方向传播}
+{在垂直于传播方向的同一条直线上}{有相位差 $\pi/2$}
+\end{questionblock}
+\begin{questionblock}
+\q 平面简谐波函数为 $y_1=0.2\cos(2\pi t-2\pi x)$（国际单位制），其沿 $x$ 轴正向传播在介质 1、2 的界面 A 处发生反射，如图所示。已知反射波的振幅不变，介质 2 的波阻大于介质 1 的波阻。A 与原点 $O$ 相距 $L=1.75\,\mathrm m$，则入射波和反射波在原点处叠加形成的振动方程（\quad）。
+\choicestwo{$y=0.2\cos(2\pi t)$}{$y=0.4\cos(2\pi t)$}
+{$y=0.2\cos(2\pi t-\pi)$}{$y=0.4\cos(2\pi t-\frac\pi2)$}
+\begin{diagram}
+\draw[->] (-.3,0)--(4.3,0) node[right]{$x$};
+\draw[->] (0,-.7)--(0,1) node[above]{$y$};
+\fill[wall] (3,-.8) rectangle (3.15,.8); \draw (3,-.8)--(3,.8);
+\node at (2.65,.7){1}; \node at (3.55,.7){2};
+\node[below right] at (3.35,0){A};
+\draw[<->] (0,-.35)--(3,-.35) node[midway,below]{$L$};
+\node[below left] at (0,0){$O$};
+\end{diagram}
+\end{questionblock}
+\clearpage
+\begin{questionblock}
+\section{参考答案与解析}
+
+\ans{1}{D}
+平衡位置向正方向运动时的相位为 $\varphi_0=-\frac\pi2$，则其下一个满足 $\cos\varphi_1=\frac12$ 时的
+\[
+\varphi_1=-\frac\pi3,\qquad
+\Delta t=\frac{\Delta\varphi}{2\pi}T=\frac T{12}.
+\]
+\end{questionblock}
+\begin{questionblock}
+\ans{2}{B}
+总能量 $E=\frac12kA^2$ 不变，
+$T=\frac{2\pi}{\omega}=2\pi\sqrt{\frac mk}$，质量 $m$ 增大，所以周期变大。
+\end{questionblock}
+\begin{questionblock}
+\ans{3}{B}
+放 $2m$ 时，弹簧缩短 $4\,\mathrm{cm}$，移去 Q 后，质量为 $m$，所以在弹簧缩短 $2\,\mathrm{cm}$ 的位置为平衡位置，并且振幅为 $2\,\mathrm{cm}$。最高点为平衡位置向上 $2\,\mathrm{cm}$，即自由伸长位置，$10\,\mathrm{cm}$ 处。
+\end{questionblock}
+\begin{questionblock}
+\ans{4}{A}
+周期 $T=2\pi\sqrt{\frac mk}$，截断一半后 $k'=2k$，又质量 $m'=m/2$，所以
+\[
+T'=2\pi\sqrt{\frac{m/2}{2k}}=\frac T2.
+\]
+\end{questionblock}
+\begin{questionblock}
+\ans{5}{B}
+总能量 $E=\frac12kA^2$，弹簧 $k$ 与质量无关。振幅 $A$ 为原来的 2 倍，总能量 $E_1$ 变为原来的 4 倍。
+\end{questionblock}
+\begin{questionblock}
+\ans{6}{C}
+第二个质点运动方程为 $x_2=A\cos(\omega t+\varphi_2)$，则 $\omega t+\varphi_0=\frac\pi2$ 时 $\omega t+\varphi_1=0$，所以
+\[
+\varphi_1=\varphi_0-\frac\pi2,\qquad
+x_2=A\cos\left(\omega t+\varphi_0-\frac\pi2\right).
+\]
+\end{questionblock}
+\begin{questionblock}
+\ans{7}{D}
+
+\[
+A=\sqrt{A^2+A^2+2A^2\cos(\Delta\varphi)}
+\ \Rightarrow\ \cos\Delta\varphi=-\frac12,\qquad \Delta\varphi=120^\circ.
+\]
+\end{questionblock}
+\begin{questionblock}
+\ans{8}{A}
+$\varphi_1=\frac\pi2$，$\varphi_2=-\frac{2\pi}3$，同频同幅合成初相位满足
+\[
+\varphi=\arctan\left(\frac{\sin\varphi_1+\sin\varphi_2}
+{\cos\varphi_1+\cos\varphi_2}\right),
+\qquad
+\varphi=\arctan\left(\frac{2-\sqrt3}{-1}\right)=\frac{11\pi}{12}.
+\]
+\end{questionblock}
+\begin{questionblock}
+\ans{9}{A}
+
+\[
+\begin{aligned}
+x&=2a(1+\cos\omega t)\cos m\omega t\\
+ &=2a\cos m\omega t+2a\cos\omega t\cos m\omega t\\
+ &=2a\cos m\omega t+a\cos(m+1)\omega t+a\cos(m-1)\omega t.
+\end{aligned}
+\]
+\end{questionblock}
+\begin{questionblock}
+\ans{10}{C}
+落入盘中动量守恒：$mv_0=2mv\Rightarrow v=\frac12v_0$。粘在一起后动能
+\[
+E_{\mathrm k}=\frac12(2m)v^2=\frac14mv_0^2=\frac12mgh,
+\]
+而 $kh=mg$，又因为新的平衡位置为 $\frac{2mg}k=2h$ 处，所以此处弹性势能为 $E_{\mathrm p}=\frac12kh^2$。简谐振动总能量
+\[
+E=\frac12kA^2=E_{\mathrm k}+E_{\mathrm p},
+\qquad A=\sqrt2h=\frac{\sqrt2mg}k.
+\]
+\end{questionblock}
+\begin{questionblock}
+\ans{11}{B}
+$\sqrt{x^2+y^2}=R$，所以
+\[
+y=R\sin(\omega t)=R\cos\left(\omega t+\frac\pi2\right).
+\]
+\end{questionblock}
+\begin{questionblock}
+\ans{12}{D}
+相当于 A 是波源，传递到 B 和 C，B、C 做受迫振动，频率必定与 A 相同。
+\end{questionblock}
+\begin{questionblock}
+\ans{13}{C}
+到达最远处时，$Fx=\mu mgx+\frac12kx^2$，所以
+\[
+x=\frac{2(F-\mu mg)}k,\qquad
+E_{\mathrm p}=\frac12kx^2=\frac{2(F-\mu mg)^2}k.
+\]
+\end{questionblock}
+\begin{questionblock}
+\ans{14}{D}
+单摆周期 $T=2\pi\sqrt{\frac lg}$，水漏出会导致质心下移，相当于摆长增加，所以周期变长，频率变小。水快漏完时，质心慢慢回到瓶子质心处，质心上移，摆长增加，周期变短，频率变大。
+\end{questionblock}
+\begin{questionblock}
+\ans{15}{C}
+
+\[
+y(x,t)=A\cos\left[\omega\left(t-\frac xu\right)+\varphi\right].
+\]
+$t=\frac{3T}4,x=0$ 时，$\omega(t-\frac xu)+\varphi=-\frac\pi2$，所以 $\varphi=-\pi$。
+\end{questionblock}
+\begin{questionblock}
+\ans{16}{D}
+
+\[
+\lambda=uT=\frac u\nu=0.72\,\mathrm m,\qquad
+\Delta x=\frac{\pi/3}{2\pi}\lambda=0.12\,\mathrm m.
+\]
+\end{questionblock}
+\begin{questionblock}
+\ans{17}{D}
+P 动能增大，说明波传递方向为 $x$ 轴负方向，
+$\lambda=20\,\mathrm m,u=10\,\mathrm{m/s}$，所以 $T=2\,\mathrm s,\omega=\pi$，
+\[
+y=10\cos\left[\pi\left(t+\frac x{10}\right)+\varphi\right]\,\mathrm{cm}.
+\]
+在 $t=0.5\,\mathrm s,x=0$ 时，$\pi(t+\frac x{10})+\varphi=-\frac\pi2$，所以 $\varphi=-\pi$。
+\end{questionblock}
+\begin{questionblock}
+\ans{18}{A}
+$y=A\cos[\omega(t+\frac xu)+\varphi]$，$t=\frac T4,x=0$ 时
+$\omega(t+\frac xu)+\varphi=-\frac\pi2$，所以 $\varphi=\pi$，A 正确。机械波动能与势能是同相位的，易判断 B、C、D 都错误。
+\end{questionblock}
+\begin{questionblock}
+\ans{19}{D}
+机械波的同一位置的质元动能与势能是相位相同、大小相等的，动能大的地方势能也大。
+\end{questionblock}
+\begin{questionblock}
+\ans{20}{B}
+机械波的同一位置的质元动能与势能是相位相同、大小相等的，$a$、$c$、$e$ 动能最大，势能也最大。
+\end{questionblock}
+\begin{questionblock}
+\ans{21}{C}
+P 将要向下运动，起振方向为 $y$ 轴负向，A 错误；
+\[
+\frac{3\lambda}2=12\Rightarrow\lambda=8\,\mathrm{cm},
+\qquad u=\lambda\nu=4\,\mathrm{m/s},
+\]
+B 错误；$t=\frac{0.56\,\mathrm m-0.12\,\mathrm m}{4\,\mathrm{m/s}}=0.11\,\mathrm s$ 时，Q 开始振动，C 正确；$0.11\,\mathrm s=\frac{11}2T$，此时 P 在平衡位置。
+\end{questionblock}
+\begin{questionblock}
+\ans{22}{B}
+发生干涉，所以二者同频，$S_2$ 初相为 $\varphi_2$，相消干涉所以
+\[
+(-2.2\times2\pi+\varphi_2)-\left(-2\times2\pi+\frac\pi2\right)=(2k+1)\pi,
+\]
+所以 $k$ 取 $-1$，$\varphi_2=-0.1\pi$。
+\end{questionblock}
+\begin{questionblock}
+\ans{23}{D}
+曲线上任一点 P 满足 $|PS_1|-|PS_2|=k\lambda$，同一个 $k$ 对应的 $|PS_1|-|PS_2|$ 是定值，满足双曲线与焦点的关系公式。
+\end{questionblock}
+\begin{questionblock}
+\ans{24}{B}
+波强 $I=\frac12\rho A^2\omega^2u$，在同一介质中相干，说明波速与频率相同。波强与振幅平方成正比，所以 $\frac{I_1}{I_2}=4$ 时 $\frac{A_1}{A_2}=2$。
+\end{questionblock}
+\begin{questionblock}
+\ans{25}{B}
+该简谐波表达式为
+$y_2=0.02\cos[100\pi(t-x/20)+\varphi]$，叠加波的公式为
+\[
+y=y_1+y_2
+=0.04\cos\left(100\pi t+\frac\varphi2-\frac{2\pi}3\right)
+\cos\left(5\pi x-\frac{2\pi}3-\frac\varphi2\right).
+\]
+$x=0$ 处为波腹，所以 $-\frac{2\pi}3-\frac\varphi2=k\pi$，所以 $k$ 取 0 时，$\varphi=-\frac{4\pi}3$。
+\end{questionblock}
+\begin{questionblock}
+\ans{26}{C}
+位移为 0，是速度最大，动能最大。波节处动能始终为 0。驻波各点位移最大时，势能才会达到最大。
+\end{questionblock}
+\begin{questionblock}
+\ans{27}{C}
+在一端固定、另一端自由的棒中产生驻波的条件是 $L=(k+\frac12)\lambda$，频率为
+\[
+f=\frac u\lambda=\frac{(k+1/2)u}{L}\quad(k=1,2,3,\ldots).
+\]
+对于材料、状态确定的棒，其上的波速与长度固定，这些频率就是其振动的本征频率，对应的振动就是简正振动，也称本征振动。频率与波长都不连续，三个最低频率之比（$k$ 取 0、1、2 时）
+$f_1:f_2:f_3=0.5:1.5:2.5=1:3:5$。
+\end{questionblock}
+\begin{questionblock}
+\ans{28}{D}
+驻波位移正负不同的两点其相位差为 $\pi$，位移正负相同的两点相位差为 0。
+\end{questionblock}
+\begin{questionblock}
+\ans{29}{D}
+声波 $\nu_{\mathrm R}=\frac{u-v_{\mathrm R}}{u-v_{\mathrm S}}\nu_{\mathrm S}=\nu_{\mathrm S}$，因为接收器远离声源，所以分子为减号，因为声源接近接收器，所以分母也为减号。
+\end{questionblock}
+\begin{questionblock}
+\ans{30}{A}
+平面电磁波在自由空间中传播时，电场强度、磁感应强度互相垂直且都垂直于传播方向。
+\end{questionblock}
+\begin{questionblock}
+\ans{31}{B}
+$y_{1O}=0.2\cos(2\pi t)$，$y_{1A}=0.2\cos(2\pi t+\frac\pi2)$，介质 2 波阻大于介质 1，所以介质 2 相对于介质 1 为波疏介质，反射有半波损失，所以
+$y_{2A}=0.2\cos(2\pi t+\frac{3\pi}2)$，传递到 $O$ 点有
+\[
+y_{2O}=0.2\cos\left(2\pi t+\frac{3\pi}2-2\pi\times1.75\right)
+=0.2\cos(2\pi t),
+\]
+所以 $y_O=y_{1O}+y_{2O}=0.4\cos(2\pi t)$。
+\end{questionblock}
+\end{document}
